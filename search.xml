@@ -4,11 +4,38 @@
   
     
     <entry>
+      <title>introduction to algorithm: Data-structure</title>
+      <link href="/2023/06/29/ds/"/>
+      <url>/2023/06/29/ds/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>This is the overview page of the data structure.</p><p>In computer science, a data structure is a data organization, management, and storage format that is usually chosen for efficient access to data. More precisely, a data structure is a collection of data values, the relationships among them, and the functions or operations that can be applied to the data, i.e., it is an algebraic structure about data.[1]</p><p>Next, I will introduce the following interesting data structures one by one. You are also welcome to add other data structures you want to learn.<del>（Of course, I may give up because it is too difficult to introduce.)</del></p><span id="more"></span><h1 id="Data-structures"><a href="#Data-structures" class="headerlink" title="Data structures"></a>Data structures</h1><ul><li>Linear Data Structure<ul><li>Stack</li><li>Queue</li><li>Linear list</li></ul></li><li>Sparse Table</li><li>Skip list</li><li>Block Data Structure<ul><li>Introduction of Core Idea</li><li>Array</li><li>Linked List</li><li>Tree</li><li>Sqrt Tree</li></ul></li><li>Tree Data Structure<ul><li>Disjoint Set Union</li><li>Fenwick</li><li>Dividing Tree</li><li>PQ Tree</li><li>Finger Tree</li><li>Huffman Tree</li><li>Segment Tree<ul><li>Segment Tree</li><li>Segment Tree Beats</li><li>Persistent Segment Tree</li><li>Li Chao Tree</li></ul></li><li>Binary Search Tree<ul><li>K-D Tree</li><li>Cartesian tree</li><li>Balanced Tree<ul><li>Introduction</li><li>Splay</li><li>Treap</li><li>Size Balanced Tree</li><li>AVL</li><li>Scapegoat Tree</li><li>Leafy Tree</li><li>Weight Balanced Leafy Tree</li><li>Red-Black Tree</li><li>B-Tree</li><li>B+ Tree</li></ul></li></ul></li><li>Dynamic Tree<ul><li>Link Cut Tree</li><li>Euler Tour Tree</li><li>Top Tree</li></ul></li><li>Tree in tree</li></ul></li><li>String related data structures<ul><li>Introduction</li><li>Hash Table</li><li>Trie</li><li>Suffix Array</li><li>Deterministic finite automaton<ul><li>Introduction</li><li>AC Automation</li><li>Suffix Automation</li><li>Sequence Automation</li><li>Palindrome Tree</li></ul></li><li>Suffix Binary Search Tree</li></ul></li></ul><h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ol><li>Data_structure. In <em>Wikipedia</em>. <a href="https://en.wikipedia.org/wiki/Data_structure">https://en.wikipedia.org/wiki/Data_structure</a></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> introduction to algorithm </category>
+          
+          <category> data structure </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> introduction </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Start a new plan! [introduction to algorithm]</title>
       <link href="/2023/06/29/Start%20a%20new%20plan!%5Bintroduction%20to%20algorithm%5D/"/>
       <url>/2023/06/29/Start%20a%20new%20plan!%5Bintroduction%20to%20algorithm%5D/</url>
       
-        <content type="html"><![CDATA[<p>As an OIer and ICPCer with 9 years of code experience, and in order to prepare for the icpc world finals at the end of 2023, I plan to organize and review all the algorithms and data structures I have learned. I also hope that my organization can help more friends who want to learn algorithms.</p><p>Irregular updates, if there is something you don’t understand, please ask questions, and if there are mistakes, you are welcome to point out.</p><p>All code is written in C++23.</p>]]></content>
+        <content type="html"><![CDATA[<p>As an OIer and ICPCer with 9 years of code experience, and in order to prepare for the icpc world finals at the end of 2023, I plan to organize and review all the algorithms and data structures I have learned. I also hope that my organization can help more friends who want to learn algorithms.</p><p>Irregular updates, if there is anything you don’t understand, please ask questions, and if there are mistakes, you are welcome to point out.</p><p>All code is written in C++23.</p>]]></content>
       
       
       <categories>
