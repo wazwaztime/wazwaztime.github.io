@@ -252,13 +252,12 @@
 <p>At that time, I thought it was very interesting to come up with a formula.</p>
 <p>Write it down now.</p>
 <span id="more"></span>
-
 <p>This is a purely mathematical problem and does not involve game theory. <del>You will learn some useless knowledge after reading it, but it will not improve your poker level.</del></p>
 <h2 id="Notation"><a href="#Notation" class="headerlink" title="Notation"></a>Notation</h2><p>Let: </p>
 <ul>
-<li>$R$ denote the set of ranks in a deck: $R &#x3D;{2, 3, 4, 5, 6, 7, 8, 9, T, J, Q, K, A}$ (or $R&#x3D;{6, 7, 8, 9, T, J, Q, K, A}$ for short deck poker).</li>
-<li>$S$ denote the set of suits in a deck: $S &#x3D; {\spadesuit, \heartsuit, \clubsuit, \diamondsuit}$.</li>
-<li>$D$ denote the set of cards in a deck: $D &#x3D; R \times S$. (Here, the multiplication operation represents the Cartesian product of the sets $R$ and $S$).</li>
+<li>$R$ denote the set of ranks in a deck: $R ={2, 3, 4, 5, 6, 7, 8, 9, T, J, Q, K, A}$ (or $R={6, 7, 8, 9, T, J, Q, K, A}$ for short deck poker).</li>
+<li>$S$ denote the set of suits in a deck: $S = {\spadesuit, \heartsuit, \clubsuit, \diamondsuit}$.</li>
+<li>$D$ denote the set of cards in a deck: $D = R \times S$. (Here, the multiplication operation represents the Cartesian product of the sets $R$ and $S$).</li>
 </ul>
 <h1 id="Problem-1-The-probability-of-Flushes"><a href="#Problem-1-The-probability-of-Flushes" class="headerlink" title="Problem 1. The probability of Flushes"></a>Problem 1. The probability of Flushes</h1><h3 id="Describe"><a href="#Describe" class="headerlink" title="Describe"></a>Describe</h3><p>Find the probability of obtaining a flush when considering a player’s hole cards and the community cards (a total of seven cards).</p>
 <h3 id="Mathematical-description"><a href="#Mathematical-description" class="headerlink" title="Mathematical description"></a>Mathematical description</h3><p>For a set $C\subset D$ , we consider $C$ as a flush if and only: $\exist s \in S, |C \cap (R \times {s})| \geq 5$.</p>
@@ -269,36 +268,64 @@
 <li><p>$D_2$ denote the set of flushes among subsets of $D$ with a cardinality of $7$.</p>
 </li>
 </ul>
-<p>The probability we require is $P(Flush)&#x3D;\frac{|D_2|}{|D_1|}\times100%$.</p>
-<h3 id="Solving-process"><a href="#Solving-process" class="headerlink" title="Solving process"></a>Solving process</h3><p>First, we need to determine $|D_1|$, which represents the cardinality (number of elements) of the set $D_1$. This cardinality corresponds to the total number of ways to select a subset of size $7$ from a set of $52$ elements. Mathematically, we can express this as:<br>$$<br>|D_1|&#x3D;\binom{52}{7}<br>$$<br>And calculate $|D_2|$, because there are only $7$ cards, so </p>
-<p>$$<br>\exist s1 \in S, s2 \in S, |C \cap (R \times {s1})| \geq 5\ and\ |C \cap (R \times {s2})| \geq 5<br>$$<br>will not appear, because the $4$ suits are symmetrical, so we only need to consider one suit and finally multiply the number of schemes by $4$.</p>
-<p>For suit $s \in S$, we calculate the number of subsets C that satisfy the condition $|C \cap (R \times {s})| &#x3D; 5$, $|C \cap (R \times {s})| &#x3D; 6$ and $|C \cap (R \times {s})| &#x3D; 7$. We then sum up these counts.</p>
-<p>For $|C \cap (R \times {s})| &#x3D; 5$, We choose $5$ elements from $R \times {s}$, and then select $2$ elements from $\complement_D (R \times {s})$ :<br>$$<br>\binom{13}{5}\times\binom{39}{2}<br>$$<br>For $|C \cap (R \times {s})| &#x3D; 6$, We choose $6$ elements from $R \times {s}$, and then select $1$ elements from $\complement_D (R \times {s})$ :<br>$$<br>\binom{13}{6}\times\binom{39}{1}<br>$$<br>For $|C \cap (R \times {s})| &#x3D; 7$, We choose $7$ elements from $R \times {s}$:<br>$$<br>\binom{13}{7}<br>$$<br>so :<br>$$<br>|D_2|&#x3D;\binom{13}{5}\times\binom{39}{2}+\binom{13}{6}\times\binom{39}{1}+\binom{13}{7}<br>$$</p>
-<p>$$<br>P(Flush)&#x3D;\frac{|D_2|}{|D_1|}\times100%&#x3D;\frac{\binom{13}{5}\times\binom{39}{2}+\binom{13}{6}\times\binom{39}{1}+\binom{13}{7}}{\binom{52}{7}}\times100%&#x3D;\frac{4,089,228}{133,784,560}\times100%&#x3D;3.057%<br>$$</p>
-<h1 id="Problem-2-The-probability-of-Straights"><a href="#Problem-2-The-probability-of-Straights" class="headerlink" title="Problem 2. The probability of Straights"></a>Problem 2. The probability of Straights</h1><h3 id="Describe-1"><a href="#Describe-1" class="headerlink" title="Describe"></a>Describe</h3><p>Find the probability of obtaining a straight when considering a player’s hole cards and the community cards (a total of seven cards).</p>
-<h3 id="Mathematical-description-1"><a href="#Mathematical-description-1" class="headerlink" title="Mathematical description"></a>Mathematical description</h3><p>Let $Rank(E)&#x3D;{x|\exist y\in S,(x,y)\in E},Rank:2^D\to 2^R$</p>
-<p>For a set $C\subset D$ , we consider $C$ as a straight if:<br>$$<br>\exists E \subset C, |E|&#x3D;5, |Rank(E)|&#x3D;5,Max(Rank(E))-Min(Rank(E))&#x3D;4<br>$$<br>or<br>$$<br>\exists E \subset C, |E|&#x3D;5, Rank(E) &#x3D; {2,3,4,5,A}<br>$$<br>Let: </p>
+<p>The probability we require is $P(Flush)=\frac{|D_2|}{|D_1|}\times100\%$.</p>
+<h3 id="Solving-process"><a href="#Solving-process" class="headerlink" title="Solving process"></a>Solving process</h3><p>First, we need to determine $|D_1|$, which represents the cardinality (number of elements) of the set $D_1$. This cardinality corresponds to the total number of ways to select a subset of size $7$ from a set of $52$ elements. Mathematically, we can express this as:</p>
+<script type="math/tex; mode=display">
+|D_1|=\binom{52}{7}</script><p>And calculate $|D_2|$, because there are only $7$ cards, so </p>
+<script type="math/tex; mode=display">
+\exist s1 \in S, s2 \in S, |C \cap (R \times \{s1\})| \geq 5\ and\ |C \cap (R \times \{s2\})| \geq 5</script><p>will not appear, because the $4$ suits are symmetrical, so we only need to consider one suit and finally multiply the number of schemes by $4$.</p>
+<p>For suit $s \in S$, we calculate the number of subsets C that satisfy the condition $|C \cap (R \times {s})| = 5$, $|C \cap (R \times {s})| = 6$ and $|C \cap (R \times {s})| = 7$. We then sum up these counts.</p>
+<p>For $|C \cap (R \times {s})| = 5$, We choose $5$ elements from $R \times {s}$, and then select $2$ elements from $\complement_D (R \times {s})$ :</p>
+<script type="math/tex; mode=display">
+\binom{13}{5}\times\binom{39}{2}</script><p>For $|C \cap (R \times {s})| = 6$, We choose $6$ elements from $R \times {s}$, and then select $1$ elements from $\complement_D (R \times {s})$ :</p>
+<script type="math/tex; mode=display">
+\binom{13}{6}\times\binom{39}{1}</script><p>For $|C \cap (R \times {s})| = 7$, We choose $7$ elements from $R \times {s}$:</p>
+<script type="math/tex; mode=display">
+\binom{13}{7}</script><p>so :</p>
+<script type="math/tex; mode=display">
+|D_2|=\binom{13}{5}\times\binom{39}{2}+\binom{13}{6}\times\binom{39}{1}+\binom{13}{7}</script><script type="math/tex; mode=display">
+P(Flush)=\frac{|D_2|}{|D_1|}\times100\%=\frac{\binom{13}{5}\times\binom{39}{2}+\binom{13}{6}\times\binom{39}{1}+\binom{13}{7}}{\binom{52}{7}}\times100\%=\frac{4,089,228}{133,784,560}\times100\%=3.057\%</script><h1 id="Problem-2-The-probability-of-Straights"><a href="#Problem-2-The-probability-of-Straights" class="headerlink" title="Problem 2. The probability of Straights"></a>Problem 2. The probability of Straights</h1><h3 id="Describe-1"><a href="#Describe-1" class="headerlink" title="Describe"></a>Describe</h3><p>Find the probability of obtaining a straight when considering a player’s hole cards and the community cards (a total of seven cards).</p>
+<h3 id="Mathematical-description-1"><a href="#Mathematical-description-1" class="headerlink" title="Mathematical description"></a>Mathematical description</h3><p>Let $Rank(E)={x|\exist y\in S,(x,y)\in E},Rank:2^D\to 2^R$</p>
+<p>For a set $C\subset D$ , we consider $C$ as a straight if: </p>
+<script type="math/tex; mode=display">
+\exists E \subset C, |E|=5, |Rank(E)|=5,Max(Rank(E))-Min(Rank(E))=4</script><p>or </p>
+<script type="math/tex; mode=display">
+\exists E \subset C, |E|=5, Rank(E) = \{2,3,4,5,A\}</script><p>Let: </p>
 <ul>
 <li><p>$D_1$ denote the set of all subsets of $D$ with a cardinality of $7$.</p>
 </li>
 <li><p>$D_2$ denote the set of Straights among subsets of $D$ with a cardinality of $7$.</p>
 </li>
 </ul>
-<p>The probability we require is $P(Straight)&#x3D;\frac{|D_2|}{|D_1|}\times100%$.</p>
-<h3 id="Solving-process-1"><a href="#Solving-process-1" class="headerlink" title="Solving process"></a>Solving process</h3><p>First, we need to determine $|D_1|$, which represents the cardinality (number of elements) of the set $D_1$. This cardinality corresponds to the total number of ways to select a subset of size $7$ from a set of $52$ elements. Mathematically, we can express this as:<br>$$<br>|D_1|&#x3D;\binom{52}{7}<br>$$<br>And calculate $|D_2|$ now. <del>(Ctrl+C and Ctrl+V)</del></p>
+<p>The probability we require is $P(Straight)=\frac{|D_2|}{|D_1|}\times100\%$.</p>
+<h3 id="Solving-process-1"><a href="#Solving-process-1" class="headerlink" title="Solving process"></a>Solving process</h3><p>First, we need to determine $|D_1|$, which represents the cardinality (number of elements) of the set $D_1$. This cardinality corresponds to the total number of ways to select a subset of size $7$ from a set of $52$ elements. Mathematically, we can express this as:</p>
+<script type="math/tex; mode=display">
+|D_1|=\binom{52}{7}</script><p>And calculate $|D_2|$ now. <del>(Ctrl+C and Ctrl+V)</del></p>
 <h4 id="Difficulty"><a href="#Difficulty" class="headerlink" title="Difficulty"></a>Difficulty</h4><p>OK. A straight is not as easy to find as a flush. For a flush, there is only one suit, so we can enumerate the suits. If we enumerate $E$, it will appear like ${5,6,7,8,9,T}$ In this way, it is counted twice in ${5,6,7,8,9}$ and ${6,7,8,9,T}$ respectively. Similarly, if there are two or more different suits for the same rank, it will be counted multiple times. If we want to use the enumeration method, we need to consider too many situations.</p>
 <h4 id="Minimal-Representation"><a href="#Minimal-Representation" class="headerlink" title="Minimal Representation"></a>Minimal Representation</h4><p>For each straight E, we calculate the solution with E as the minimum straight to avoid redundant calculations. Here, ‘minimum’ refers not only to the card rank, but for the convenience of computation, we can define the hierarchy of suits.</p>
-<p>For example, if $C&#x3D;{(4,\spadesuit),(5,\spadesuit),(5,\heartsuit),(6,\clubsuit),(7,\clubsuit),(8, \diamondsuit),(9,\heartsuit)}$, $C$ will only be calculated when $E&#x3D;{(4,\spadesuit),(5,\spadesuit),(6,\clubsuit),(7,\clubsuit),(8, \diamondsuit)}$, not when $E&#x3D;{(4,\spadesuit),(5,\heartsuit),(6,\clubsuit),(7,\clubsuit),(8, \diamondsuit)}$ and $E&#x3D;{(5,\spadesuit),(6,\clubsuit),(7,\clubsuit),(8, \diamondsuit),(9,\heartsuit)}$. </p>
-<p>We call $E&#x3D;{(4,\spadesuit),(5,\spadesuit),(6,\clubsuit),(7,\clubsuit),(8, \diamondsuit)}$ is the Minimal Representation of $C&#x3D;{(4,\spadesuit),(5,\spadesuit),(5,\heartsuit),(6,\clubsuit),(7,\clubsuit),(8, \diamondsuit),(9,\heartsuit)}$.</p>
+<p>For example, if $C={(4,\spadesuit),(5,\spadesuit),(5,\heartsuit),(6,\clubsuit),(7,\clubsuit),(8, \diamondsuit),(9,\heartsuit)}$, $C$ will only be calculated when $E={(4,\spadesuit),(5,\spadesuit),(6,\clubsuit),(7,\clubsuit),(8, \diamondsuit)}$, not when $E={(4,\spadesuit),(5,\heartsuit),(6,\clubsuit),(7,\clubsuit),(8, \diamondsuit)}$ and $E={(5,\spadesuit),(6,\clubsuit),(7,\clubsuit),(8, \diamondsuit),(9,\heartsuit)}$. </p>
+<p>We call $E={(4,\spadesuit),(5,\spadesuit),(6,\clubsuit),(7,\clubsuit),(8, \diamondsuit)}$ is the Minimal Representation of $C={(4,\spadesuit),(5,\spadesuit),(5,\heartsuit),(6,\clubsuit),(7,\clubsuit),(8, \diamondsuit),(9,\heartsuit)}$.</p>
 <p>(assume $\spadesuit &lt; \heartsuit &lt; \clubsuit &lt; \diamondsuit$)</p>
-<p>So we only need to calculate<br>$$<br>\exists E \subset C, |E|&#x3D;5, |Rank(E)|&#x3D;5,Max(Rank(E))-Min(Rank(E))&#x3D;4······(1)<br>$$<br>and<br>$$<br>\exists E \subset C, |E|&#x3D;5, Rank(E) &#x3D; {2,3,4,5,A}······(2)<br>$$<br>separately.</p>
+<p>So we only need to calculate </p>
+<script type="math/tex; mode=display">
+\exists E \subset C, |E|=5, |Rank(E)|=5,Max(Rank(E))-Min(Rank(E))=4······(1)</script><p>and </p>
+<script type="math/tex; mode=display">
+\exists E \subset C, |E|=5, Rank(E) = \{2,3,4,5,A\}······(2)</script><p>separately.</p>
 <h4 id="Generating-Function"><a href="#Generating-Function" class="headerlink" title="Generating Function"></a>Generating Function</h4><p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Generating_function">https://en.wikipedia.org/wiki/Generating_function</a></p>
 <p>Ok. If I have a chance later, I would like to talk about Generating Function and combination counting.</p>
 <p><del>(Cujus rei demonstrationem mirabilem sane detexi. Hanc marginis exiguitas non caperet.)</del></p>
-<p>For situation $(1)$, suppose the smallest number is $x$, then $x-1$ cannot be selected:<br>$$<br>g(x)&#x3D;(\sum_{i&#x3D;0}^{15}\binom{28+i}{2}x^i)(x^3+x^2+x+1)^5<br>$$<br>For situation $(2)$, for $Rank(E) &#x3D; {2,3,4,5,A}$, there is no problem:<br>$$<br>f(x)&#x3D;(\sum_{i&#x3D;0}^{15}\binom{32+i}{2}x^i)(x^3+x^2+x+1)^5<br>$$<br>so : (The expression “$[x^{i}]f(x)$” is referred to as the coefficient of the $i_{th}$ term of the polynomial $f(x)$.)<br>$$<br>|D_2|&#x3D;<a href="f(x)+9*g(x)">x^{15}</a><br>$$</p>
-<p>$$<br>|D_2|&#x3D;<a href="%5Csum_%7Bi=0%7D%5E%7B15%7D(%5Cbinom%7B32+i%7D%7B2%7D+9%5Cbinom%7B28+i%7D%7B2%7D)x%5Ei">x^{15}</a>(x^3+x^2+x+1)^5<br>$$</p>
-<p>$$<br>P(Straight)&#x3D;\frac{|D_2|}{|D_1|}\times100% \hfill\<br>&#x3D;\frac{<a href="%5Csum_%7Bi=0%7D%5E%7B15%7D(%5Cbinom%7B32+i%7D%7B2%7D+9%5Cbinom%7B28+i%7D%7B2%7D)x%5Ei">x^{15}</a>(x^3+x^2+x+1)^5}{\binom{52}{7}}\times100% \hfill\<br>&#x3D;\frac{6,454,272}{133,784,560}\times100% \hfill\<br>&#x3D;4.824% \hfill<br>$$</p>
-<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>$P(Flush)&#x3D;3.057%&lt;P(Straight)&#x3D;4.824%$</p>
+<p>For situation $(1)$, suppose the smallest number is $x$, then $x-1$ cannot be selected: </p>
+<script type="math/tex; mode=display">
+g(x)=(\sum_{i=0}^{15}\binom{28+i}{2}x^i)(x^3+x^2+x+1)^5</script><p>For situation $(2)$, for $Rank(E) = {2,3,4,5,A}$, there is no problem: </p>
+<script type="math/tex; mode=display">
+f(x)=(\sum_{i=0}^{15}\binom{32+i}{2}x^i)(x^3+x^2+x+1)^5</script><p>so : (The expression “$[x^{i}]f(x)$” is referred to as the coefficient of the $i_{th}$ term of the polynomial $f(x)$.)</p>
+<script type="math/tex; mode=display">
+|D_2|=[x^{15}](f(x)+9*g(x))</script><script type="math/tex; mode=display">
+|D_2|=[x^{15}](\sum_{i=0}^{15}(\binom{32+i}{2}+9\binom{28+i}{2})x^i)(x^3+x^2+x+1)^5</script><script type="math/tex; mode=display">
+P(Straight)=\frac{|D_2|}{|D_1|}\times100\% \hfill\\
+=\frac{[x^{15}](\sum_{i=0}^{15}(\binom{32+i}{2}+9\binom{28+i}{2})x^i)(x^3+x^2+x+1)^5}{\binom{52}{7}}\times100\% \hfill\\
+=\frac{6,454,272}{133,784,560}\times100\% \hfill\\
+=4.824\% \hfill</script><h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>$P(Flush)=3.057\%&lt;P(Straight)=4.824\%$</p>
 <p>So it is reasonable for a flush to be greater than a straight.</p>
 
     </div>
@@ -509,6 +536,8 @@
 
 
 
+
+  
 
   
 
